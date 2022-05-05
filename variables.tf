@@ -4,3 +4,10 @@ variable "user_public_key" {
   sensitive = true
   description = "user public key"
 }
+
+variable "location" {
+  type = string
+  default = "Southeast Asia"
+  sensitive = true
+  description = "resource group location"
+}
