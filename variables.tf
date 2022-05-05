@@ -1,5 +1,5 @@
 variable "public_key" {
-  type = String
+  type = string
   default = ""
   sensitive = true
   description = "user public key"
