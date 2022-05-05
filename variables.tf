@@ -1,4 +1,4 @@
-variable "public_key" {
+variable "user_public_key" {
   type = string
   default = ""
   sensitive = true
