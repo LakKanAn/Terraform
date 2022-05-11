@@ -38,14 +38,17 @@ module "network-security-group" {
     {
       name     = "SSH"
       priority = "500"
+      protocol = "Tcp"
     },
     {
       name     = "HTTP"
       priority = "501"
+      protocol = "Tcp"
     },
     {
       name     = "HTTPS"
       priority = "502"
+      protocol = "Tcp"  
     }
   ]
 
@@ -55,10 +58,10 @@ module "network-security-group" {
       priority                = 200
       direction               = "Inbound"
       access                  = "Allow"
-      protocol                = "tcp"
+      protocol                = "Tcp"
       source_port_range       = "*"
       destination_port_range  = "81"
-      source_address_prefixes = "*"
+      source_address_prefixes = ["*"]
       description             = "nginx proxy manager admin port"
     }
   ]
