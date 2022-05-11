@@ -7,3 +7,10 @@ variable "resource_group_location" {
   default       = "eastus"
   description   = "Location of the resource group."
 }
+
+variable "user_public_key" {
+  type = string
+  default = ""
+  sensitive = true
+  description = "user public key"
+}
