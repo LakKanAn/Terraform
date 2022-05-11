@@ -10,11 +10,10 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker
-DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
-mkdir -p $DOCKER_CONFIG/cli-plugins
+mkdir -p $HOME/.docker/cli-plugins
 curl -SL https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
 chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
-sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
+sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-composes
 EOF
 
 }
