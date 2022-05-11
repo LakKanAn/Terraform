@@ -45,7 +45,6 @@ module "network-security-group" {
       protocol                = "Tcp"
       source_port_range       = "*"
       destination_port_range  = "81"
-      source_address_prefixes = ["*"]
       description             = "nginx proxy manager admin port"
     },
     {
@@ -56,7 +55,6 @@ module "network-security-group" {
       protocol                = "Tcp"
       source_port_range       = "*"
       destination_port_range  = "22"
-      source_address_prefixes = ["*"]
       description             = "secure shell port"
     },
     {
@@ -67,7 +65,6 @@ module "network-security-group" {
       protocol                = "Tcp"
       source_port_range       = "*"
       destination_port_range  = "80"
-      source_address_prefixes = ["*"]
       description             = "HTTP port"
     },
     {
@@ -78,7 +75,6 @@ module "network-security-group" {
       protocol                = "Tcp"
       source_port_range       = "*"
       destination_port_range  = "443"
-      source_address_prefixes = ["*"]
       description             = "HTTPS port"
     },
   ]
