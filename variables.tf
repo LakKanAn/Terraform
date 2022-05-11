@@ -9,7 +9,7 @@ variable "resource_group_location" {
 }
 
 variable "user_public_key" {
-  type = string
+  type = list(string)
   default = ""
   sensitive = true
   description = "user public key"
