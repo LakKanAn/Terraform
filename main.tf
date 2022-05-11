@@ -64,6 +64,10 @@ module "network-security-group" {
   ]
 
   tags = {}
+
+  depends_on = [
+    azurerm_resource_group.rg,
+  ]
 }
 # Create network interface
 resource "azurerm_network_interface" "myterraformnic" {
@@ -137,7 +141,7 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
 
   admin_ssh_key {
     username   = "azureuser"
-    public_key = concat(var.user_public_key, [tls_private_key.example_ssh.public_key_openssh])
+    public_key = join("\n",concat(var.user_public_key, [tls_private_key.example_ssh.public_key_openssh]))
   }
 
   boot_diagnostics {
