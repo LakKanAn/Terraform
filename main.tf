@@ -34,23 +34,7 @@ module "network-security-group" {
   location              = azurerm_resource_group.rg.location
   security_group_name   = "myNetworkSecurityGroup"
   source_address_prefix = azurerm_virtual_network.myterraformnetwork.address_space
-  predefined_rules = [
-    {
-      name     = "SSH"
-      priority = "500"
-      protocol = "Tcp"
-    },
-    {
-      name     = "HTTP"
-      priority = "501"
-      protocol = "Tcp"
-    },
-    {
-      name     = "HTTPS"
-      priority = "502"
-      protocol = "Tcp"  
-    }
-  ]
+  predefined_rules = []
 
   custom_rules = [
     {
@@ -63,7 +47,40 @@ module "network-security-group" {
       destination_port_range  = "81"
       source_address_prefixes = ["*"]
       description             = "nginx proxy manager admin port"
-    }
+    },
+    {
+      name                    = "SSH"
+      priority                = 201
+      direction               = "Inbound"
+      access                  = "Allow"
+      protocol                = "Tcp"
+      source_port_range       = "*"
+      destination_port_range  = "22"
+      source_address_prefixes = ["*"]
+      description             = "secure shell port"
+    },
+    {
+      name                    = "HTTP"
+      priority                = 200
+      direction               = "Inbound"
+      access                  = "Allow"
+      protocol                = "Tcp"
+      source_port_range       = "*"
+      destination_port_range  = "80"
+      source_address_prefixes = ["*"]
+      description             = "HTTP port"
+    },
+    {
+      name                    = "HTTPS"
+      priority                = 200
+      direction               = "Inbound"
+      access                  = "Allow"
+      protocol                = "Tcp"
+      source_port_range       = "*"
+      destination_port_range  = "443"
+      source_address_prefixes = ["*"]
+      description             = "HTTPS port"
+    },
   ]
 
   tags = {}
