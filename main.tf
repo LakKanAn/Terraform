@@ -137,7 +137,7 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
   resource_group_name   = azurerm_resource_group.rg.name
   network_interface_ids = [azurerm_network_interface.myterraformnic.id]
   size                  = "Standard_B1ls"
-
+  user_data             = base64encode(local.user_data)
   os_disk {
     name                 = "myOsDisk"
     caching              = "ReadWrite"
