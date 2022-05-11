@@ -59,7 +59,7 @@ module "network-security-group" {
     },
     {
       name                    = "HTTP"
-      priority                = 200
+      priority                = 202
       direction               = "Inbound"
       access                  = "Allow"
       protocol                = "Tcp"
@@ -69,7 +69,7 @@ module "network-security-group" {
     },
     {
       name                    = "HTTPS"
-      priority                = 200
+      priority                = 203
       direction               = "Inbound"
       access                  = "Allow"
       protocol                = "Tcp"
