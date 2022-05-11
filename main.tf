@@ -80,9 +80,9 @@ resource "azurerm_network_interface" "myterraformnic" {
 }
 
 # Connect the security group to the network interface
-resource "azurerm_network_interface_security_group_association" "example" {
+resource "azurerm_network_interface_security_group_association" "myterraformnicsga" {
   network_interface_id      = azurerm_network_interface.myterraformnic.id
-  network_security_group_id = azurerm_network_security_group.myterraformnsg.id
+  network_security_group_id = module.network-security-group.network_security_group_id
 }
 
 # Generate random text for a unique storage account name
@@ -137,7 +137,7 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
 
   admin_ssh_key {
     username   = "azureuser"
-    public_key = concat(user_public_key, formatlist(tls_private_key.example_ssh.public_key_openssh))
+    public_key = concat(var.user_public_key, formatlist(tls_private_key.example_ssh.public_key_openssh))
   }
 
   boot_diagnostics {
