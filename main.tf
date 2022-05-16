@@ -132,7 +132,7 @@ resource "tls_private_key" "example_ssh" {
 
 # Create virtual machine
 resource "azurerm_linux_virtual_machine" "myterraformvm" {
-  name                  = "Ubuntu_Vm"
+  name                  = "Ubuntu-Vm"
   location              = azurerm_resource_group.rg.location
   resource_group_name   = azurerm_resource_group.rg.name
   network_interface_ids = [azurerm_network_interface.myterraformnic.id]
@@ -151,7 +151,7 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
     version   = "latest"
   }
 
-  computer_name                   = "ubuntu_vm"
+  computer_name                   = "ubuntu-vm"
   admin_username                  = "ubuntu"
   disable_password_authentication = true
 
