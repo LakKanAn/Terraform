@@ -132,7 +132,7 @@ resource "tls_private_key" "example_ssh" {
 
 # Create virtual machine
 resource "azurerm_linux_virtual_machine" "myterraformvm" {
-  name                  = "myVM"
+  name                  = "Ubuntu_Vm"
   location              = azurerm_resource_group.rg.location
   resource_group_name   = azurerm_resource_group.rg.name
   network_interface_ids = [azurerm_network_interface.myterraformnic.id]
@@ -147,16 +147,16 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
   source_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
-    sku       = "18.04-LTS"
+    sku       = "20.04-LTS"
     version   = "latest"
   }
 
-  computer_name                   = "myvm"
-  admin_username                  = "azureuser"
+  computer_name                   = "ubuntu_vm"
+  admin_username                  = "ubuntu"
   disable_password_authentication = true
 
   admin_ssh_key {
-    username   = "azureuser"
+    username   = "ubuntu"
     public_key = join("\n",concat(var.user_public_key, [tls_private_key.example_ssh.public_key_openssh]))
   }
 
